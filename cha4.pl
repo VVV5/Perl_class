@@ -1,4 +1,4 @@
-#!/user/bin/perl -w
+#!/usr/bin/perl -w
 use strict;
 my $dna = 'ACTGGTCTAG';
 print $dna;
