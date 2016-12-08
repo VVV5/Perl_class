@@ -8,12 +8,9 @@ unless ( -e $dna_filename ) {
        print "File \"$dna_filename\" doesn\'t seem to exist !!\n";
        exit;
 }
-unless ( open ( DNAFILE, $dna_filename ) ) {
-       print "Cannot open file \"$dna_filename\"\n\n";
-       exit;
-}
-my @DNA = <DNAFILE>;
-close DNAFILE;
+open my $DNAFILE, '<', $dna_filename or die "$0 : failed to open input file '$dna_filename' : $!\n";
+my @DNA = <$DNAFILE>;
+close $DNAFILE or warn "$0 : failed to close input file '$dna_filename' : $!\n";
 my $DNA = join( '', @DNA );
 $DNA =~ s/\s//g;
 my $a = 0;
@@ -28,10 +25,7 @@ while ( $DNA =~ /t/ig )                 { $t++ }
 while ( $DNA =~ /[^acgt]/ig )           { $e++ }
 print "A=$a C=$c G=$g T=$t errors=$e\n";
 my $outputfile = "countbase";
-unless ( open ( COUNTBASE, ">$outputfile" ) ) {
-       print "Cannot open filr \"$outputfile\" to write to!!\n\n";
-       exit;
-}
-print COUNTBASE "A=$a C=$c G=$g T=$t errors=$e\n";
-close (COUNTBASE);
+open my $COUNTBASE, '<', $outputfile or die "$0 : failed to open input file '$outputfile' : $!\n";
+print $COUNTBASE "A=$a C=$c G=$g T=$t errors=$e\n";
+close $COUNTBASE or warn "$0 : failed to close outputfile '$outputfile' : $!\n";;
 exit;
