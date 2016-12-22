@@ -5,7 +5,7 @@ my $dna = 'TTTTTTTTTTTTTTTTTTTTTTTTTT';
 my $i;
 my $mutant;
 srand( time | $$ );
-$mutant = mutate($dna);
+$mutant = mutate_better($dna);
 print "\nMutate DNA\n\n";
 print "\nHere is the original DNA:\n\n";
 print "$dna\n";
@@ -13,15 +13,18 @@ print "\nHere is the mutant DNA:\n\n";
 print "$mutant\n";
 print "\nHere are 10 more successive mutations:\n\n";
 for ( $i = 0 ; $i <10 ; ++$i ) {
-     $mutant = mutate($mutant);
+     $mutant = mutate_better($mutant);
      print "$mutant\n";
 }
 exit;
-sub mutate {
+sub mutate_better {
     my ($dna) = @_;
     my ($position) = randomposition($dna);
-    my ($newbase) = randomnucleotide();
-    substr( $dna, $position, 1, $newbase );
+    my ($newbase);
+    do {
+       $newbase = randomnucleotide();
+    }until ( $newbase ne substr($dna, $position,1));
+    substr($dna,$position,1,$newbase);
     return $dna;
 }
 sub randomelement {
