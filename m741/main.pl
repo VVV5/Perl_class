@@ -14,11 +14,11 @@ print "\n";
 print "Please enter your option: ";
 my $choice = <STDIN>;
 chomp $choice;
-if ( $choice eq "1" ) {
+if ( $choice == 1 ) {
 }
-elsif ( $choice eq "2" ) {
+elsif ( $choice == 2 ) {
 }
-elsif ( $choice eq "3" ) {
+elsif ( $choice == 3 ) {
 exit;
  }
 else {
@@ -34,15 +34,19 @@ else {
     print "Try again: ";
     my $choice1 = <STDIN>;
     chomp $choice1;
-    if ( $choice eq "1" ) {
+    if ( $choice == 1 ) {
      }
-    elsif ( $choice eq "2" ) {
+    elsif ( $choice == 2 ) {
      }    
-    elsif ( $choice eq "3" ) {
+    elsif ( $choice ==3 ) {
     exit;
      }
     else {
-    print "ERROR!!program is closed!";
+    print "*" x 60;
+    print "\n";
+    print "ERROR!!Baymin automatically exits!!";
+    print "\n";
+    print "*" x 60;
     print "\n";
     exit;
     }
