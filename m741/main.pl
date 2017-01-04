@@ -158,7 +158,7 @@ chomp $num;
 
 
 
-  select STDOUT;
+  #select STDOUT;
   print "\n";
   print "*" x 60;
   print "\nusername :\n";
