@@ -156,7 +156,7 @@ else {
   print "Error! Please enter a number between 1 and 2";
 }
   select STDOUT;
-  print "username :\n";
+  print "\n\nusername :\n";
   my $usename=<STDIN>;
   chomp $usename;
   if ( -e $usename ) {
@@ -175,7 +175,7 @@ else {
 print "\n";
 print "*" x 60;
 print "\n\n";
-print "1\.Evaluate\.\n2\.Exercise\.\n3\.Diet\.\n4\.Exit\.\n";
+print "1\.Evaluate\.\n2\.Exercise\.\n3\.Exit\.\n\n";
 print "*" x 60;
 print "\nPlease choose what you want to do?\n";
 my $choice2 = <STDIN>;
@@ -254,13 +254,46 @@ sub sleepingtime {
    print "\nYou need a lot of time to sleep.\n";
   }
 }
-
 }
+
+
 elsif( $choice2 == 2 ) {
 
+my $exercise1 = exercise($infor{'age'});
 
+sub exercise {
+my  ( $aging) = @_;
+$BMI1 =  BMI($infor{'height'},$infor{'weight'});
+ if($BMI1<18.9){
+print "you are too light!\n";
+print "Do some basic  exercise and enhanced nutrient intake!\n";
+   if ($aging ge 40 || $aging le 16 ) {
+ print"jogging for  an hour\.";
+  }
+  else {
+print "Yoga for an hour or jogging for an hour.please choice one.\n";
+  }
+}
+ elsif ($BMI1>24.9){
+print"you are overweight!\n";
+print"Do more exercise to keep health!\n";
+  if ($aging ge 40 || $aging le 16) {
+ print"Jogging two hours or Yoga two hours\.";
+  }
+ else {
+print"Running two hours or swimming two hours \.Please choice one!\n";
+  }
+ }
 
-
+ else {
+print"you are standard\.Please keep on!\n";
+ if ($aging ge 40 || $aging le 16 ) {
+ print"Yoga for one hour or jogging one hour\.Please choice one and you will be healthier.\n";
+}
+ else {
+print"Running for one and half an hour or jogging one and half an hour \.Please choice one and you will be healthier.\n";
+ }
+}
 }
 elsif ( $choice eq "2" ) {
   print"\n signing in your usename and password:\n";
@@ -331,5 +364,5 @@ else {
     exit;
     }
 } 
-}
 exit;
+}

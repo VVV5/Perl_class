@@ -16,7 +16,8 @@ print "\n";
 print "Please enter your option: ";
 $choice = <STDIN>;
 chomp $choice;
-if ( $choice eq "1" ) {
+if ( $choice eq "1" ) 
+{
 my $num = '';
 print "\n************************sign up************************\n";
 print "1\.entering\n";
@@ -24,7 +25,8 @@ print "2\.press enter key to exit!\n";
 print "\n*******************************************************\n";
 $num=<STDIN>;
 chomp $num;
-if($num eq "1"){
+  if($num eq "1")
+  {
   my $uname = '';
   print"\n filling in your personal information:\n";
   print "Please enter your name:\n";
@@ -148,15 +150,18 @@ if($num eq "1"){
   print "$key $values\n";
   }
   close $SHUJU or warn  "$0 : failed to close input file '%hash' : $!\n";
-  }  
-elsif ($num=~/^\s*$/) {
-  print"\n you already exit program\n";
-}
-else {
-  print "Error! Please enter a number between 1 and 2";
-}
+  
+
+
+
+
+
+
+
   select STDOUT;
-  print "username :\n";
+  print "\n";
+  print "*" x 60;
+  print "\nusername :\n";
   my $usename=<STDIN>;
   chomp $usename;
   if ( -e $usename ) {
@@ -175,7 +180,7 @@ else {
 print "\n";
 print "*" x 60;
 print "\n\n";
-print "1\.Evaluate\.\n2\.Exercise\.\n3\.Exit\.\n";
+print "1\.Evaluate\.\n2\.Exercise\.\n3\.Exit\.\n\n";
 print "*" x 60;
 print "\nPlease choose what you want to do?\n";
 my $choice2 = <STDIN>;
@@ -195,6 +200,7 @@ sub BMI {
  $BMI = ( $weigh / ( $heigh * $heigh ) ) ;
  return $BMI;
 }
+
 
 sub BMI_evaluate {
  my ( $value ) = @_;
@@ -223,6 +229,8 @@ sub blood_pressure {
    }
 }
 
+
+
 sub sleepingtime {
  my ( $ag, $time ) = @_;
  print "\n\n\nYour real sleeping time is $time h.\n";
@@ -239,6 +247,7 @@ sub sleepingtime {
      print "\nYour sleeping time is suitable!\n";
    } else {
       print "\nYour sleeping time is not suitable!\n";
+
    }
 
   } elsif ( $ag > 13 and $ag <= 30  ) {
@@ -255,50 +264,28 @@ sub sleepingtime {
   }
 
 }
-   elsif( $choice2 == 2 ) {
+}
 
-my $exerciise1 = exercise($infor{'age'});
+elsif ( $choice2 == 2)  
+{
 
-sub exercise {
-my  ( $aging) = @_;
-$BMI1 =  BMI($infor{'height'},$infor{'weight'});
- if($BMI1<18.9){
-print "you are too light!\n";
-print "Do some basic  exercise and enhanced nutrient intake!\n";
-   if ($aging ge 40 || $aging le 16 ) {
- print"jogging for  an hour\.";
+my $exercise1 = exercise($infor{'age'});
+ 
+}
+else 
+{
+}
+  }  
+  elsif ($num=~/^\s*$/) {
+  print"\n you already exit program\n";
   }
   else {
-print "Yoga for an hour or jogging for an hour.please choice one.\n";
+  print "Error! Please enter a number between 1 and 2";
   }
-}
- elsif ($BMI1>24.9){
-print"you are overweight!\n";
-print"Do more exercise to keep health!\n";
-  if ($aging ge 40 || $aging le 16) {
- print"Jogging two hours or Yoga two hours\.";
-  }
- else {
-print"Running two hours or swimming two hours \.Please choice one!\n";
-  }
- }
 
- else {
-print"you are standard\.Please keep on!\n";
- if ($aging ge 40 || $aging le 16 ) {
- print"Yoga for one hour or jogging one hour\.Please choice one and you will be healthier.\n";
 }
- else {
-print"Running for one and half an hour or jogging one and half an hour \.Please choice one and you will be healthier.\n";
- }
-}
-}
-}
-else {
- }
-}
-}
-elsif ( $choice eq "2" ) {
+elsif ( $choice eq "2" ) 
+{
   print"\n signing in your usename and password:\n";
   print "username :\n";
   my $usename=<STDIN>;
@@ -331,6 +318,38 @@ print "$canshu => $shuzhi\n";
 else {
  print "This username does not exist!\n";
  exit;
+}
+
+
+
+print "\n";
+print "*" x 60;
+print "\n\n";
+print "1\.Evaluate\.\n2\.Exercise\.\n3\.Exit\.\n";
+print "*" x 60;
+print "\nPlease choose what you want to do?\n";
+my $choice2 = <STDIN>;
+if ( $choice2 == 1 ) {
+print "\n";
+print "*" x 60;
+print "\n\n";
+
+
+my $numb = BMI($infor{'height'}, $infor{'weight'});
+my $result = BMI_evaluate( $numb );
+my $blood = blood_pressure( $infor{'lowblood'}, $infor{'highblood'} );
+my $sleepy = sleepingtime( $infor{'age'}, $infor{'sleephours'});
+
+
+}
+elsif ( $choice2 == 2)  
+{
+
+my $exercise1 = exercise($infor{'age'});
+ 
+}
+else 
+{
 }
  
 }
@@ -368,3 +387,44 @@ else {
     }
 } 
 exit;
+
+
+
+sub exercise {
+my  ( $aging) = @_;
+$BMI1 =  BMI($infor{'height'},$infor{'weight'});
+ if($BMI1<18.9){
+print "you are too light!\n";
+print "Do some basic  exercise and enhanced nutrient intake!\n";
+   if ($aging ge 40 || $aging le 16 ) {
+ print"jogging for  an hour\.";
+  }
+else {
+print "Yoga for an hour or jogging for an hour.please choice one.\n";
+  }
+}
+elsif ($BMI1>24.9){
+print"you are overweight!\n";
+print"Do more exercise to keep health!\n";
+  if ($aging ge 40 || $aging le 16) {
+ print"Jogging two hours or Yoga two hours\.";
+  }
+else {
+print"Running two hours or swimming two hours \.Please choice one!\n";
+  }
+ }
+else {
+print"you are standard\.Please keep on!\n";
+ if ($aging ge 40 || $aging le 16 ) {
+ print"Yoga for one hour or jogging one hour\.Please choice one and you will be healthier.\n";
+}
+else {
+print"Running for one and half an hour or jogging one and half an hour \.Please choice one and you will be healthier.\n";
+ }
+}
+}
+
+
+ 
+
+
